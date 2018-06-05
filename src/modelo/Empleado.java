@@ -9,13 +9,13 @@ package modelo;
  *
  * @author link
  */
-public class Empleado {
-    
-    private int numEmpleado;
-    private String nombre;
-    private Double sueldo;
-    private String usuario;
-    private String contrasena;
+public abstract class Empleado {
+
+    protected int numEmpleado;
+    protected String nombre;
+    protected Double sueldo;
+    protected String usuario;
+    protected String contrasena;
 
     public Empleado(int numEmpleado, String nombre, Double sueldo, String usuario, String contrasena) {
         this.numEmpleado = numEmpleado;
@@ -24,14 +24,9 @@ public class Empleado {
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
-    
-    /*METODOS*/
-    
-    
-    
-    
-    /*METODOS*/
 
+    /*METODOS*/
+ /*METODOS*/
     public int getNumEmpleado() {
         return numEmpleado;
     }
@@ -71,4 +66,10 @@ public class Empleado {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    @Override
+    public String toString() {
+        return this.numEmpleado + "\t" + this.nombre + "\t" + this.usuario + "\t" + this.contrasena + "\t" + this.sueldo;
+    }
+
 }
