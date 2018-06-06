@@ -16,17 +16,27 @@ import java.util.Calendar;
  */
 public class Factura {
 
+    private int idFact;
     private Cliente c;
     private Calendar fecha;
     private double importe;
     private MetodoPago mp;
     private ArrayList<LineaFactura> listaLineas = new ArrayList<>();
 
-    public Factura(Cliente c, Calendar fecha, double importe, MetodoPago mp) {
+    public Factura(int idFact, Cliente c, Calendar fecha, double importe, MetodoPago mp) {
+        this.idFact = idFact;
         this.c = c;
-        this.fecha = Calendar.getInstance();
+        this.fecha = fecha;
         this.importe = importe;
         this.mp = mp;
+    }
+
+    public int getIdFact() {
+        return idFact;
+    }
+
+    public void setIdFact(int idFact) {
+        this.idFact = idFact;
     }
 
     public Cliente getC() {
@@ -97,7 +107,7 @@ public class Factura {
 
     @Override
     public String toString() {
-        return this.c.toString() + "\t" + this.fecha + "\t" + this.mp + "\t" + this.importe;
+        return this.c.toString() + "\t" + this.idFact + "\t" + this.fecha + "\t" + this.mp + "\t" + this.importe;
     }
 
 }

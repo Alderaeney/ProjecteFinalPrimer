@@ -5,17 +5,18 @@
  */
 package controlador;
 
+import java.io.File;
+import java.util.ArrayList;
+import modelo.Tienda;
+
 /**
  *
  * @author mati
  */
-public class GestionTienda {
+public class GestionFicheros {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+    File raiz;
+    ArrayList<Tienda>listaTienda=new ArrayList<>();
+   
     
 }
