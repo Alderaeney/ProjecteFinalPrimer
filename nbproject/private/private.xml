@@ -3,15 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/LineaFactura.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Pieza.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Ordenador.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/vista/home.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Cliente.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Empleado.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Factura.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Servicio.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Producto.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Producto.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/MetodoPago.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/EmpleadoAdmin.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Ordenador.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Servicio.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/LineaFactura.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Factura.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Empleado.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Cliente.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/EmpleadoNormal.java</file>
+            <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Tienda.java</file>
         </group>
     </open-files>
 </project-private>
