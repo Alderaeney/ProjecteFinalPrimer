@@ -10,7 +10,7 @@ package modelo;
  * @author link
  */
 public class Pieza extends Producto {
-    
+
     private int cantidad;
 
     public Pieza(int cantidad, String nombre, String codigo, Double precio) {
@@ -19,15 +19,7 @@ public class Pieza extends Producto {
     }
 
     /*METODOS*/
-    
-    
-    
-    
-    
-    
-    
-    /*METODOS*/
-    
+ /*METODOS*/
     public int getCantidad() {
         return cantidad;
     }
@@ -35,4 +27,10 @@ public class Pieza extends Producto {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\t" + this.cantidad;
+    }
+
 }

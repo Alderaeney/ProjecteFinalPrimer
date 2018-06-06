@@ -10,7 +10,7 @@ package modelo;
  * @author link
  */
 public abstract class Producto {
-    
+
     private String nombre;
     private String codigo;
     private Double precio;
@@ -22,15 +22,7 @@ public abstract class Producto {
     }
 
     /*METODOS*/
-    
-    
-    
-    
-    
-    
-    
-    /*METODOS*/
-    
+ /*METODOS*/
     public String getNombre() {
         return nombre;
     }
@@ -54,4 +46,10 @@ public abstract class Producto {
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
+
+    @Override
+    public String toString() {
+        return this.codigo + "\t" + this.nombre + "\t" + this.precio;
+    }
+
 }

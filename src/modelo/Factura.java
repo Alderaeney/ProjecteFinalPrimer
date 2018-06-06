@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import Excepciones.lineaFacturaExistente;
+import Excepciones.lineaFacturaNoExistente;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -13,30 +15,26 @@ import java.util.Calendar;
  * @author link
  */
 public class Factura {
-    
-    private String nombreCliente;
+
+    private Cliente c;
     private Calendar fecha;
-    private ArrayList<LineaFactura> lineas;
+    private double importe;
+    private MetodoPago mp;
+    private ArrayList<LineaFactura> listaLineas = new ArrayList<>();
 
-    public Factura(String nombreCliente, Calendar fecha) {
-        this.nombreCliente = nombreCliente;
-        this.fecha = fecha;
-        this.lineas = new ArrayList<>();
+    public Factura(Cliente c, Calendar fecha, double importe, MetodoPago mp) {
+        this.c = c;
+        this.fecha = Calendar.getInstance();
+        this.importe = importe;
+        this.mp = mp;
     }
 
-    /*METODOS*/
-    
-    
-    
-    
-    /*METODOS*/
-    
-    public String getNombreCliente() {
-        return nombreCliente;
+    public Cliente getC() {
+        return c;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setC(Cliente c) {
+        this.c = c;
     }
 
     public Calendar getFecha() {
@@ -47,11 +45,59 @@ public class Factura {
         this.fecha = fecha;
     }
 
-    public ArrayList<LineaFactura> getLineas() {
-        return lineas;
+    public double getImporte() {
+        return importe;
     }
 
-    public void setLineas(ArrayList<LineaFactura> lineas) {
-        this.lineas = lineas;
+    public void setImporte(double importe) {
+        this.importe = importe;
     }
+
+    public ArrayList<LineaFactura> getListaLineas() {
+        return listaLineas;
+    }
+
+    public void setListaLineas(ArrayList<LineaFactura> listaLineas) {
+        this.listaLineas = listaLineas;
+    }
+
+    public MetodoPago getMp() {
+        return mp;
+    }
+
+    public void setMp(MetodoPago mp) {
+        this.mp = mp;
+    }
+
+    public LineaFactura buscarLineaDeFactura(int codLinea) {
+        for (int i = 0; i < this.listaLineas.size(); i++) {
+            if (this.listaLineas.get(i).getCodigoLinea() == codLinea) {
+                return this.listaLineas.get(i);
+            }
+        }
+        return null;
+    }
+
+    public void añadirLineaAFactura(LineaFactura lf) throws lineaFacturaExistente {
+        if (this.buscarLineaDeFactura(lf.getCodigoLinea()) == null) {
+            this.listaLineas.add(lf);
+        } else {
+            throw new lineaFacturaExistente(lf);
+        }
+    }
+
+    public void eliminarLineaDeFactura(LineaFactura lf) throws lineaFacturaNoExistente {
+        if (this.buscarLineaDeFactura(lf.getCodigoLinea()) != null) {
+            this.listaLineas.remove(lf);
+        } else {
+            throw new lineaFacturaNoExistente(lf);
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return this.c.toString() + "\t" + this.fecha + "\t" + this.mp + "\t" + this.importe;
+    }
+
 }

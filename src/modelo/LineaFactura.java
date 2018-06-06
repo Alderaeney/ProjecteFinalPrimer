@@ -10,24 +10,27 @@ package modelo;
  * @author link
  */
 public class LineaFactura {
-    
+
+    private int codigoLinea;
     private Producto producto;
     private int cantidad;
     private Double coste;
 
-    public LineaFactura(Producto producto, int cantidad, Double coste) {
+    public LineaFactura(int codigoLinea, Producto producto, int cantidad, Double coste) {
+        this.codigoLinea = codigoLinea;
         this.producto = producto;
         this.cantidad = cantidad;
         this.coste = coste;
     }
 
-    /*METODOS*/
-    
-    
-    
-    
-    /*METODOS*/
-    
+    public int getCodigoLinea() {
+        return codigoLinea;
+    }
+
+    public void setCodigoLinea(int codigoLinea) {
+        this.codigoLinea = codigoLinea;
+    }
+
     public Producto getProducto() {
         return producto;
     }
@@ -51,4 +54,10 @@ public class LineaFactura {
     public void setCoste(Double coste) {
         this.coste = coste;
     }
+
+    @Override
+    public String toString() {
+        return this.producto.toString() + "\t" + this.codigoLinea + "\t" + this.coste + "\t" + this.cantidad;
+    }
+
 }

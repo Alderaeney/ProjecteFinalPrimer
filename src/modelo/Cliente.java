@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author link
  */
 public class Cliente {
-    
+
     private String nombre;
     private String direccion;
     private String dni;
@@ -24,14 +24,9 @@ public class Cliente {
         this.dni = dni;
         this.facturas = new ArrayList<>();
     }
-    
-    /*METODOS*/
-    
-    
-    
-    
-    /*METODOS*/
 
+    /*METODOS*/
+ /*METODOS*/
     public String getNombre() {
         return nombre;
     }
@@ -63,4 +58,10 @@ public class Cliente {
     public void setFacturas(ArrayList<Factura> facturas) {
         this.facturas = facturas;
     }
+
+    @Override
+    public String toString() {
+        return this.dni + "\t" + this.nombre + "\t" + this.direccion;
+    }
+
 }

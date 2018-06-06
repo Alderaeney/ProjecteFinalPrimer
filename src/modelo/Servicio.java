@@ -10,7 +10,7 @@ package modelo;
  * @author link
  */
 public class Servicio extends Producto {
-    
+
     private double tiempo;
 
     public Servicio(double tiempo, String nombre, String codigo, Double precio) {
@@ -19,12 +19,7 @@ public class Servicio extends Producto {
     }
 
     /*METODOS*/
-    
-    
-    
-    
-    /*METODOS*/
-    
+ /*METODOS*/
     public double getTiempo() {
         return tiempo;
     }
@@ -32,4 +27,10 @@ public class Servicio extends Producto {
     public void setTiempo(double tiempo) {
         this.tiempo = tiempo;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\t" + this.tiempo;
+    }
+
 }
