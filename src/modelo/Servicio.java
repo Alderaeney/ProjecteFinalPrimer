@@ -33,4 +33,8 @@ public class Servicio extends Producto {
         return super.toString() + "\t" + this.tiempo;
     }
 
+     @Override
+    public String formatear(){
+        return "Servicio;"+this.getCodigo()+";"+this.getNombre()+";"+this.getPrecio()+";"+this.tiempo+";";
+    }
 }

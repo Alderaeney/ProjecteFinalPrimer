@@ -33,4 +33,8 @@ public class Ordenador extends Producto {
         return super.toString() + "\t" + this.cantidad;
     }
 
+     @Override
+    public String formatear(){
+        return "Ordenador;"+this.getCodigo()+";"+this.getNombre()+";"+this.getPrecio()+";"+this.cantidad+";";
+    }
 }
