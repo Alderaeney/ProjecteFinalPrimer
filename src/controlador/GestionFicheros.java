@@ -6,16 +6,22 @@
 package controlador;
 
 import java.io.File;
+<<<<<<< HEAD:src/controlador/GestionTienda.java
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import modelo.Cliente;
 import modelo.Empleado;
 import modelo.Producto;
+=======
+import java.util.ArrayList;
+import modelo.Tienda;
+>>>>>>> master:src/controlador/GestionFicheros.java
 
 /**
  *
  * @author mati
  */
+<<<<<<< HEAD:src/controlador/GestionTienda.java
 public class GestionTienda {
     
     private File carpeta;
@@ -69,6 +75,13 @@ public class GestionTienda {
         
         
     }
+=======
+public class GestionFicheros {
+
+    File raiz;
+    ArrayList<Tienda>listaTienda=new ArrayList<>();
+   
+>>>>>>> master:src/controlador/GestionFicheros.java
     
     
     /*METODOS*/

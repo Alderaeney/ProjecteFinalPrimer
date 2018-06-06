@@ -78,6 +78,7 @@ public abstract class Empleado {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+    
 
     public String getDni() {
         return dni;
