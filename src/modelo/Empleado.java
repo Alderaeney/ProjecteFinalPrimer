@@ -12,13 +12,15 @@ package modelo;
 public abstract class Empleado {
 
     protected int numEmpleado;
+    private String dni;
     protected String nombre;
     protected Double sueldo;
     protected String usuario;
     protected String contrasena;
 
-    public Empleado(int numEmpleado, String nombre, Double sueldo, String usuario, String contrasena) {
+    public Empleado(int numEmpleado, String dni, String nombre, Double sueldo, String usuario, String contrasena) {
         this.numEmpleado = numEmpleado;
+        this.dni = dni;
         this.nombre = nombre;
         this.sueldo = sueldo;
         this.usuario = usuario;
@@ -26,7 +28,17 @@ public abstract class Empleado {
     }
 
     /*METODOS*/
- /*METODOS*/
+
+    /**
+     *
+     * @return String en el formato en que se guardará
+     */
+
+    
+    public abstract String formatear();
+    
+    
+    /*METODOS*/
     public int getNumEmpleado() {
         return numEmpleado;
     }
@@ -65,6 +77,14 @@ public abstract class Empleado {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     @Override

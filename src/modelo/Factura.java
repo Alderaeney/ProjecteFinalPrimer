@@ -16,25 +16,66 @@ import java.util.Calendar;
  */
 public class Factura {
 
-    private Cliente c;
+    private int id;
+    private Cliente cliente;
     private Calendar fecha;
     private double importe;
     private MetodoPago mp;
     private ArrayList<LineaFactura> listaLineas = new ArrayList<>();
 
-    public Factura(Cliente c, Calendar fecha, double importe, MetodoPago mp) {
-        this.c = c;
+    public Factura(int id, Cliente cliente, Calendar fecha, double importe, MetodoPago mp) {
+        this.id = id;
+        this.cliente = cliente;
         this.fecha = Calendar.getInstance();
         this.importe = importe;
         this.mp = mp;
     }
-
-    public Cliente getC() {
-        return c;
+    
+    /*METODOS*/
+    
+    public LineaFactura buscarLineaDeFactura(int codLinea) {
+        for (int i = 0; i < this.listaLineas.size(); i++) {
+            if (this.listaLineas.get(i).getCodigoLinea() == codLinea) {
+                return this.listaLineas.get(i);
+            }
+        }
+        return null;
     }
 
-    public void setC(Cliente c) {
-        this.c = c;
+    public void añadirLineaAFactura(LineaFactura lf) throws lineaFacturaExistente {
+        if (this.buscarLineaDeFactura(lf.getCodigoLinea()) == null) {
+            this.listaLineas.add(lf);
+        } else {
+            throw new lineaFacturaExistente(lf);
+        }
+    }
+
+    public void eliminarLineaDeFactura(LineaFactura lf) throws lineaFacturaNoExistente {
+        if (this.buscarLineaDeFactura(lf.getCodigoLinea()) != null) {
+            this.listaLineas.remove(lf);
+        } else {
+            throw new lineaFacturaNoExistente(lf);
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return this.cliente.toString() + "\t" + this.fecha + "\t" + this.mp + "\t" + this.importe;
+    }
+    
+    public String formatear(){
+        return this.importe+";"+this.fecha.get(Calendar.DAY_OF_WEEK)+"/"+this.fecha.get(Calendar.MONTH)+"/"+this.fecha.get(Calendar.YEAR)+" "+this.fecha.get(Calendar.HOUR)+":"+this.fecha.get(Calendar.MINUTE)+";"+this.mp+";";
+    }
+    
+    /*METODOS*/
+
+    public Cliente getC() {
+        return cliente;
+    }
+
+    public void setC(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Calendar getFecha() {
@@ -68,36 +109,4 @@ public class Factura {
     public void setMp(MetodoPago mp) {
         this.mp = mp;
     }
-
-    public LineaFactura buscarLineaDeFactura(int codLinea) {
-        for (int i = 0; i < this.listaLineas.size(); i++) {
-            if (this.listaLineas.get(i).getCodigoLinea() == codLinea) {
-                return this.listaLineas.get(i);
-            }
-        }
-        return null;
-    }
-
-    public void añadirLineaAFactura(LineaFactura lf) throws lineaFacturaExistente {
-        if (this.buscarLineaDeFactura(lf.getCodigoLinea()) == null) {
-            this.listaLineas.add(lf);
-        } else {
-            throw new lineaFacturaExistente(lf);
-        }
-    }
-
-    public void eliminarLineaDeFactura(LineaFactura lf) throws lineaFacturaNoExistente {
-        if (this.buscarLineaDeFactura(lf.getCodigoLinea()) != null) {
-            this.listaLineas.remove(lf);
-        } else {
-            throw new lineaFacturaNoExistente(lf);
-        }
-
-    }
-
-    @Override
-    public String toString() {
-        return this.c.toString() + "\t" + this.fecha + "\t" + this.mp + "\t" + this.importe;
-    }
-
 }

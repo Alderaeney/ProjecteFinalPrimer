@@ -22,6 +22,15 @@ public class LineaFactura {
         this.cantidad = cantidad;
         this.coste = coste;
     }
+    
+    /*METODOS*/
+    
+    public String formatear(){
+        return this.codigoLinea+";"+this.producto.getCodigo()+";"+this.cantidad+";"+this.coste+";";
+    }
+    
+    
+    /*METODOS*/
 
     public int getCodigoLinea() {
         return codigoLinea;

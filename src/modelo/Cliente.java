@@ -26,7 +26,12 @@ public class Cliente {
     }
 
     /*METODOS*/
- /*METODOS*/
+    
+    public String formatear(){
+        return this.getDni()+";"+this.nombre+";"+this.direccion+";";
+    }
+    
+    /*METODOS*/
     public String getNombre() {
         return nombre;
     }

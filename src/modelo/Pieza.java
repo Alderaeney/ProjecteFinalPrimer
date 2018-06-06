@@ -19,7 +19,10 @@ public class Pieza extends Producto {
     }
 
     /*METODOS*/
- /*METODOS*/
+
+    
+    
+    /*METODOS*/
     public int getCantidad() {
         return cantidad;
     }
@@ -33,4 +36,8 @@ public class Pieza extends Producto {
         return super.toString() + "\t" + this.cantidad;
     }
 
+    @Override
+    public String formatear(){
+        return "Pieza;"+this.getCodigo()+";"+this.getNombre()+";"+this.getPrecio()+";"+this.cantidad+";";
+    }
 }

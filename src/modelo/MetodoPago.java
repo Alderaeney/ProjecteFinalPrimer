@@ -12,8 +12,4 @@ package modelo;
 public enum MetodoPago {
     EFECTIVO,
     TARJETA_BANCARIA,
-    BITCOIN,
-    ETHEREUM,
-    LITECOIN,
-    IOTA;
 }
