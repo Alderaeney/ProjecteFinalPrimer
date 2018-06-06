@@ -202,12 +202,27 @@ public class home extends javax.swing.JFrame {
         menuModificarCliente.setText("Modificar Cliente");
 
         menuModificarClienteNombre.setText("Nombre");
+        menuModificarClienteNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarClienteNombreActionPerformed(evt);
+            }
+        });
         menuModificarCliente.add(menuModificarClienteNombre);
 
         menuModificarClienteTelefono.setText("Telefono");
+        menuModificarClienteTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarClienteTelefonoActionPerformed(evt);
+            }
+        });
         menuModificarCliente.add(menuModificarClienteTelefono);
 
         menuModificarClienteDireccion.setText("Direccion");
+        menuModificarClienteDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarClienteDireccionActionPerformed(evt);
+            }
+        });
         menuModificarCliente.add(menuModificarClienteDireccion);
 
         menuClientes.add(menuModificarCliente);
@@ -309,6 +324,21 @@ public class home extends javax.swing.JFrame {
         vista.EliminarCliente eliminarCliente = new vista.EliminarCliente();
         eliminarCliente.setVisible(true);
     }//GEN-LAST:event_menuEliminarClienteActionPerformed
+
+    private void menuModificarClienteNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteNombreActionPerformed
+        vista.ModificarClienteNombre modifClienteNombre = new vista.ModificarClienteNombre();
+        modifClienteNombre.setVisible(true);
+    }//GEN-LAST:event_menuModificarClienteNombreActionPerformed
+
+    private void menuModificarClienteTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteTelefonoActionPerformed
+        vista.ModificarClienteTelefono modifClienteTelefono = new vista.ModificarClienteTelefono();
+        modifClienteTelefono.setVisible(true);
+    }//GEN-LAST:event_menuModificarClienteTelefonoActionPerformed
+
+    private void menuModificarClienteDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteDireccionActionPerformed
+        vista.ModificarClienteDireccion modifClienteDireccion = new vista.ModificarClienteDireccion();
+        modifClienteDireccion.setVisible(true);
+    }//GEN-LAST:event_menuModificarClienteDireccionActionPerformed
 
     private boolean buscarUsuario(String usuario, String pass) {
         File ficheroAbuscar = new File("usuarios.txt");
