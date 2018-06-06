@@ -14,9 +14,12 @@ import modelo.Tienda;
  * @author mati
  */
 public class GestionFicheros {
-
     File raiz;
     ArrayList<Tienda>listaTienda=new ArrayList<>();
+
+    public GestionFicheros(File raiz) {
+        this.raiz = raiz;
+    }
    
     
 }
