@@ -34,7 +34,6 @@ public class home extends javax.swing.JFrame {
         initComponents();
         this.estadoVisual.setBackground(Color.red);
         this.informeEstado.setForeground(Color.white);
-        this.jLabel1.setForeground(Color.white);
         this.jLabel3.setForeground(Color.white);
         this.jLabel4.setForeground(Color.white);
     }
@@ -48,15 +47,8 @@ public class home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        estadoVisual = new javax.swing.JPanel();
-        informeEstado = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -65,74 +57,46 @@ public class home extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         desconexion = new javax.swing.JButton();
         jTextPane2 = new javax.swing.JPasswordField();
+        estadoVisual = new javax.swing.JPanel();
+        informeEstado = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuClientes = new javax.swing.JMenu();
+        menuCrearCliente = new javax.swing.JMenuItem();
+        menuEliminarCliente = new javax.swing.JMenuItem();
+        menuModificarCliente = new javax.swing.JMenu();
+        menuModificarClienteNombre = new javax.swing.JMenuItem();
+        menuModificarClienteTelefono = new javax.swing.JMenuItem();
+        menuModificarClienteDireccion = new javax.swing.JMenuItem();
+        menuEmpleados = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        menuFacturas = new javax.swing.JMenu();
+        menuServicios = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
-
-        jLabel6.setText("NetBeans IDE 8.2");
-
-        jLabel7.setText("Build 201609300101");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addGap(2, 2, 2)
-                .addComponent(jLabel7))
-        );
+        setBackground(new java.awt.Color(102, 102, 102));
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(null);
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 20, 270, 230);
-
-        jLabel1.setText("Los Flautistas de Dr Lluis Simarro LaCabra");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(10, 260, 250, 20);
-
-        estadoVisual.setBackground(new java.awt.Color(255, 0, 51));
-        estadoVisual.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        estadoVisual.setEnabled(false);
-
-        javax.swing.GroupLayout estadoVisualLayout = new javax.swing.GroupLayout(estadoVisual);
-        estadoVisual.setLayout(estadoVisualLayout);
-        estadoVisualLayout.setHorizontalGroup(
-            estadoVisualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 18, Short.MAX_VALUE)
-        );
-        estadoVisualLayout.setVerticalGroup(
-            estadoVisualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 18, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(estadoVisual);
-        estadoVisual.setBounds(0, 0, 20, 20);
-        jPanel2.add(informeEstado);
-        informeEstado.setBounds(20, 0, 180, 16);
+        jLabel2.setBounds(80, -10, 270, 230);
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
 
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         jLabel3.setText("Login:");
 
         jScrollPane2.setViewportView(jTextPane1);
 
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 2, 14)); // NOI18N
         jLabel4.setText("Password:");
 
         btnLogin.setText("Login");
@@ -149,6 +113,21 @@ public class home extends javax.swing.JFrame {
             }
         });
 
+        estadoVisual.setBackground(new java.awt.Color(255, 0, 51));
+        estadoVisual.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        estadoVisual.setEnabled(false);
+
+        javax.swing.GroupLayout estadoVisualLayout = new javax.swing.GroupLayout(estadoVisual);
+        estadoVisual.setLayout(estadoVisualLayout);
+        estadoVisualLayout.setHorizontalGroup(
+            estadoVisualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 18, Short.MAX_VALUE)
+        );
+        estadoVisualLayout.setVerticalGroup(
+            estadoVisualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 18, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -156,14 +135,25 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextPane2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jLabel4)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(desconexion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(desconexion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(estadoVisual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(informeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -171,41 +161,134 @@ public class home extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(3, 3, 3)
-                .addComponent(jTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
-                    .addComponent(desconexion))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogin))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addGap(9, 9, 9)
+                        .addComponent(jTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(desconexion)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(estadoVisual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(informeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        menuClientes.setText("Clientes");
+
+        menuCrearCliente.setText("Crear Cliente");
+        menuCrearCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCrearClienteActionPerformed(evt);
+            }
+        });
+        menuClientes.add(menuCrearCliente);
+
+        menuEliminarCliente.setText("Eliminar Cliente");
+        menuEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEliminarClienteActionPerformed(evt);
+            }
+        });
+        menuClientes.add(menuEliminarCliente);
+
+        menuModificarCliente.setText("Modificar Cliente");
+
+        menuModificarClienteNombre.setText("Nombre");
+        menuModificarClienteNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarClienteNombreActionPerformed(evt);
+            }
+        });
+        menuModificarCliente.add(menuModificarClienteNombre);
+
+        menuModificarClienteTelefono.setText("Telefono");
+        menuModificarClienteTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarClienteTelefonoActionPerformed(evt);
+            }
+        });
+        menuModificarCliente.add(menuModificarClienteTelefono);
+
+        menuModificarClienteDireccion.setText("Direccion");
+        menuModificarClienteDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuModificarClienteDireccionActionPerformed(evt);
+            }
+        });
+        menuModificarCliente.add(menuModificarClienteDireccion);
+
+        menuClientes.add(menuModificarCliente);
+
+        jMenuBar1.add(menuClientes);
+
+        menuEmpleados.setText("Empleados");
+
+        jMenuItem6.setText("Crear Empleado");
+        menuEmpleados.add(jMenuItem6);
+
+        jMenuItem7.setText("Eliminar Empleado");
+        menuEmpleados.add(jMenuItem7);
+
+        jMenu2.setText("Modificar Empleado");
+
+        jMenuItem8.setText("Nombre");
+        jMenu2.add(jMenuItem8);
+
+        jMenuItem9.setText("Sueldo");
+        jMenu2.add(jMenuItem9);
+
+        menuEmpleados.add(jMenu2);
+
+        jMenuItem10.setText("Modo Administrador");
+        menuEmpleados.add(jMenuItem10);
+
+        jMenuBar1.add(menuEmpleados);
+
+        menuFacturas.setText("Facturas");
+        jMenuBar1.add(menuFacturas);
+
+        menuServicios.setText("Productos");
+
+        jMenuItem11.setText("Piezas");
+        menuServicios.add(jMenuItem11);
+
+        jMenuItem12.setText("Ordenadores");
+        menuServicios.add(jMenuItem12);
+
+        jMenuItem13.setText("Servicios");
+        menuServicios.add(jMenuItem13);
+
+        jMenuBar1.add(menuServicios);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -231,6 +314,31 @@ public class home extends javax.swing.JFrame {
         this.loginExitoso=false;
         actualizar();
     }//GEN-LAST:event_desconexionActionPerformed
+
+    private void menuCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCrearClienteActionPerformed
+        vista.CrearCliente crearCliente = new vista.CrearCliente();
+        crearCliente.setVisible(true);
+    }//GEN-LAST:event_menuCrearClienteActionPerformed
+
+    private void menuEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarClienteActionPerformed
+        vista.EliminarCliente eliminarCliente = new vista.EliminarCliente();
+        eliminarCliente.setVisible(true);
+    }//GEN-LAST:event_menuEliminarClienteActionPerformed
+
+    private void menuModificarClienteNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteNombreActionPerformed
+        vista.ModificarClienteNombre modifClienteNombre = new vista.ModificarClienteNombre();
+        modifClienteNombre.setVisible(true);
+    }//GEN-LAST:event_menuModificarClienteNombreActionPerformed
+
+    private void menuModificarClienteTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteTelefonoActionPerformed
+        vista.ModificarClienteTelefono modifClienteTelefono = new vista.ModificarClienteTelefono();
+        modifClienteTelefono.setVisible(true);
+    }//GEN-LAST:event_menuModificarClienteTelefonoActionPerformed
+
+    private void menuModificarClienteDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteDireccionActionPerformed
+        vista.ModificarClienteDireccion modifClienteDireccion = new vista.ModificarClienteDireccion();
+        modifClienteDireccion.setVisible(true);
+    }//GEN-LAST:event_menuModificarClienteDireccionActionPerformed
 
     private boolean buscarUsuario(String usuario, String pass) {
         File ficheroAbuscar = new File("usuarios.txt");
@@ -306,18 +414,33 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JButton desconexion;
     private javax.swing.JPanel estadoVisual;
     private javax.swing.JLabel informeEstado;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JPasswordField jTextPane2;
+    private javax.swing.JMenu menuClientes;
+    private javax.swing.JMenuItem menuCrearCliente;
+    private javax.swing.JMenuItem menuEliminarCliente;
+    private javax.swing.JMenu menuEmpleados;
+    private javax.swing.JMenu menuFacturas;
+    private javax.swing.JMenu menuModificarCliente;
+    private javax.swing.JMenuItem menuModificarClienteDireccion;
+    private javax.swing.JMenuItem menuModificarClienteNombre;
+    private javax.swing.JMenuItem menuModificarClienteTelefono;
+    private javax.swing.JMenu menuServicios;
     // End of variables declaration//GEN-END:variables
 }
