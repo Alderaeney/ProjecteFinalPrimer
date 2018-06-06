@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Producto.java</file>
             <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/MetodoPago.java</file>
             <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/EmpleadoAdmin.java</file>
@@ -14,6 +15,16 @@
             <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Cliente.java</file>
             <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/EmpleadoNormal.java</file>
             <file>file:/home/mati/NetBeansProjects/PROYECTE_FINAL/ProjecteFinalPrimer/src/modelo/Tienda.java</file>
+=======
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/modelo/EmpleadoAdmin.java</file>
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/modelo/Producto.java</file>
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/modelo/Empleado.java</file>
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/modelo/Cliente.java</file>
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/modelo/Factura.java</file>
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/controlador/GestionFicheros.java</file>
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/modelo/LineaFactura.java</file>
+            <file>file:/home/mati/NetBeansGit/ProjecteFinalPrimer/src/modelo/Tienda.java</file>
+>>>>>>> master
         </group>
     </open-files>
 </project-private>
