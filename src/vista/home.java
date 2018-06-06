@@ -79,12 +79,10 @@ public class home extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-
+        /*
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-<<<<<<< Updated upstream
         setBackground(new java.awt.Color(102, 102, 102));
         setResizable(false);
-=======
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.darkGray, null, null));
@@ -115,8 +113,7 @@ public class home extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(jLabel7))
         );
->>>>>>> Stashed changes
-
+        */
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(null);
         jPanel2.add(jLabel2);
@@ -327,10 +324,10 @@ public class home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-  
+
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        
+
         if(this.buscarUsuario(this.jTextPane1.getText(), this.jTextPane2.getText())){
             System.out.println("LOGIN CORRECTO");
             this.loginExitoso = true;
@@ -340,7 +337,7 @@ public class home extends javax.swing.JFrame {
         }else{
             System.out.println("CREDENCIALES INCORRECTAS");
         }
-        
+
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void desconexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desconexionActionPerformed
@@ -412,7 +409,7 @@ public class home extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

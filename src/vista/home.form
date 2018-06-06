@@ -178,8 +178,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-<<<<<<< Updated upstream
-=======
+
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -236,7 +235,7 @@
         </Component>
       </SubComponents>
     </Container>
->>>>>>> Stashed changes
+
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
