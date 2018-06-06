@@ -11,9 +11,9 @@ package modelo;
  */
 public abstract class Producto {
 
-    private String nombre;
-    private String codigo;
-    private Double precio;
+    protected String nombre;
+    protected String codigo;
+    protected Double precio;
 
     public Producto(String nombre, String codigo, Double precio) {
         this.nombre = nombre;
