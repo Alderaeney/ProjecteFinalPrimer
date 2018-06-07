@@ -18,6 +18,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import modelo.Tienda;
 
 /**
  *
@@ -36,6 +37,8 @@ public class home extends javax.swing.JFrame {
         this.informeEstado.setForeground(Color.white);
         this.jLabel3.setForeground(Color.white);
         this.jLabel4.setForeground(Color.white);
+        Tienda t = new Tienda("MATH", "DR LUIS ISMARR", "454354", "64656454", "www.google.es");
+        controlador.GestionFicheros.añadirTienda(t);
     }
 
     /**

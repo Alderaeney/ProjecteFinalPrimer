@@ -16,24 +16,33 @@ public class Cliente {
     private String nombre;
     private String direccion;
     private String dni;
-    private ArrayList<Factura> facturas;
+    private String telefono;
+    private ArrayList<Factura> facturas = new ArrayList<>();
 
-    public Cliente(String nombre, String direccion, String dni) {
+    public Cliente(String nombre, String direccion, String dni, String telefono) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.dni = dni;
-        this.facturas = new ArrayList<>();
+        this.telefono = telefono;
+
     }
 
     /*METODOS*/
-    
-    public String formatear(){
-        return this.getDni()+";"+this.nombre+";"+this.direccion+";";
+    public String formatear() {
+        return this.getDni() + ";" + this.nombre + ";" + this.direccion + ";";
     }
-    
+
     /*METODOS*/
     public String getNombre() {
         return nombre;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public void setNombre(String nombre) {

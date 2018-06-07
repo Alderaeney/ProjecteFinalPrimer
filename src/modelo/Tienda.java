@@ -382,7 +382,7 @@ public class Tienda {
 
     public static void main(String[] args) {
         Tienda t = new Tienda("APPSimarret", "DR LUIS ISMARR", "454354", "64656454", "www.google.es");
-        Cliente c = new Cliente("pepe", "la calle de pepe", "x5514136r");
+        Cliente c = new Cliente("pepe", "la calle de pepe", "x5514136r","603680594");
         Factura f = new Factura(4343, c, Calendar.getInstance(), 5000, MetodoPago.EFECTIVO);
         Ordenador p = new Ordenador(2, "MSI GL62MVR 7RFX-1271XES Intel Core i5-7300HQ/8GB/1TB/GTX 1060/15.6\"", "534534", 899.0);
         Ordenador p2 = new Ordenador(3, "Nox Hummer MC USB 3.0 Zero Edition Blanca", "34665234", 49.99);

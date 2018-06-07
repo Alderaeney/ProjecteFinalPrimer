@@ -5,6 +5,12 @@
  */
 package vista;
 
+import Excepciones.clienteExistente;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import modelo.Cliente;
+
 /**
  *
  * @author Bienvenidos
@@ -55,6 +61,11 @@ public class CrearCliente extends javax.swing.JFrame {
         btnAtras.setText("Atras");
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Telefono:");
 
@@ -113,6 +124,22 @@ public class CrearCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if (this.txtNombre.getText().length() > 0 && this.txtDireccion.getText().length() > 0 && this.txtDni.getText().length() > 0 && this.txtTelefono.getText().length() > 0) {
+            Cliente c = new Cliente(this.txtNombre.getText(), this.txtDireccion.getText(), this.txtDni.getText(), this.txtTelefono.getText());
+            try {
+                controlador.GestionFicheros.getListaTienda().get(0).añadirCliente(c);
+                System.out.println("DADO CON EXITO");
+                System.out.println(controlador.GestionFicheros.getListaTienda().size());
+            } catch (clienteExistente ex) {
+                Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "SE TE OLVIDA ALGUN CAMPO!");
+        }
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments

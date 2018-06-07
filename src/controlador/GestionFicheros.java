@@ -5,8 +5,11 @@
  */
 package controlador;
 
+import Excepciones.clienteExistente;
+import Excepciones.clienteNoExistente;
 import java.io.File;
 import java.util.ArrayList;
+import modelo.Cliente;
 import modelo.Tienda;
 
 /**
@@ -14,12 +17,32 @@ import modelo.Tienda;
  * @author mati
  */
 public class GestionFicheros {
+
     File raiz;
-    ArrayList<Tienda>listaTienda=new ArrayList<>();
+    static ArrayList<Tienda> listaTienda = new ArrayList<>();
 
     public GestionFicheros(File raiz) {
         this.raiz = raiz;
     }
-   
-    
+
+    public File getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(File raiz) {
+        this.raiz = raiz;
+    }
+
+    public static ArrayList<Tienda> getListaTienda() {
+        return listaTienda;
+    }
+
+    public static void setListaTienda(ArrayList<Tienda> listaTienda) {
+        GestionFicheros.listaTienda = listaTienda;
+    }
+
+    public static void añadirTienda(Tienda t) {
+        listaTienda.add(t);
+    }
+
 }
