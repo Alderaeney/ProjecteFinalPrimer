@@ -112,6 +112,31 @@ public class Tienda {
         this.web = web;
     }
 
+    public ArrayList<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public void setListaEmpleados(ArrayList<Empleado> listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
+    }
+
+    public ArrayList<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(ArrayList<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
+    }
+
+    public ArrayList<Producto> getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(ArrayList<Producto> listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+    
+
     public void imprimirClientes() {
         for (int i = 0; i < this.listaClientes.size(); i++) {
             System.out.println(this.listaClientes.get(i).toString());
