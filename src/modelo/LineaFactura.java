@@ -16,22 +16,19 @@ public class LineaFactura {
     private int cantidad;
     private Double coste;
 
-    public LineaFactura(int codigoLinea, Producto producto, int cantidad, Double coste) {
+    public LineaFactura(int codigoLinea, Producto producto, int cantidad) {
         this.codigoLinea = codigoLinea;
         this.producto = producto;
         this.cantidad = cantidad;
-        this.coste = coste;
+        this.coste = producto.getPrecio() * cantidad;
     }
-    
-    /*METODOS*/
-    
-    public String formatear(){
-        return this.codigoLinea+";"+this.producto.getCodigo()+";"+this.cantidad+";"+this.coste+";";
-    }
-    
-    
-    /*METODOS*/
 
+    /*METODOS*/
+    public String formatear() {
+        return this.codigoLinea + ";" + this.producto.getCodigo() + ";" + this.cantidad + ";" + this.coste + ";";
+    }
+
+    /*METODOS*/
     public int getCodigoLinea() {
         return codigoLinea;
     }
