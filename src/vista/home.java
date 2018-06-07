@@ -30,6 +30,7 @@ public class home extends javax.swing.JFrame {
      * Creates new form home
      */
     private boolean loginExitoso = false;
+    private boolean accesoAdmin = false;
 
     public home() {
         initComponents();
@@ -270,14 +271,29 @@ public class home extends javax.swing.JFrame {
         menuEmpleados.add(jMenuItem6);
 
         jMenuItem7.setText("Eliminar Empleado");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         menuEmpleados.add(jMenuItem7);
 
         jMenu2.setText("Modificar Empleado");
 
         jMenuItem8.setText("Nombre");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem8);
 
         jMenuItem9.setText("Sueldo");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem9);
 
         menuEmpleados.add(jMenu2);
@@ -400,6 +416,25 @@ public class home extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        vista.EliminarEmpleado eliminarEmpleado = new vista.EliminarEmpleado();
+        eliminarEmpleado.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        vista.ModificarNombreEmpleado modifNomEmpleado = new vista.ModificarNombreEmpleado();
+        modifNomEmpleado.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        if(accesoAdmin==true){
+            vista.ModificarSueldoEmpleado modifSueldoEmpleado = new vista.ModificarSueldoEmpleado();
+            modifSueldoEmpleado.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(jMenu2, "Usted no tiene permisos de administrador.\n Este error sera reportado");
+        }
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private boolean buscarUsuario(String usuario, String pass) {
         File ficheroAbuscar = new File("usuarios.txt");
