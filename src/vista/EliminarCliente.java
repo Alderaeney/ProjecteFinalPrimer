@@ -44,7 +44,7 @@ public class EliminarCliente extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "DNI", "Nombre", "Direccion", "Telefono"
             }
         ));
         jScrollPane1.setViewportView(TablaClientes);
