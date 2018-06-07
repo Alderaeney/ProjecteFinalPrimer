@@ -6,11 +6,14 @@
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/LineaFactura.java</file>
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Pieza.java</file>
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Ordenador.java</file>
-            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/vista/home.java</file>
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Cliente.java</file>
+            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/MetodoPago.java</file>
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Empleado.java</file>
+            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/EmpleadoNormal.java</file>
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Factura.java</file>
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Servicio.java</file>
+            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/EmpleadoAdmin.java</file>
+            <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Tienda.java</file>
             <file>file:/home/link/Documentos/ProjecteFinalPrimer/src/modelo/Producto.java</file>
         </group>
     </open-files>

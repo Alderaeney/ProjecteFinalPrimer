@@ -13,10 +13,25 @@ public class EmpleadoAdmin extends Empleado {
 
     private int antiguedad;
 
-    public EmpleadoAdmin(int antiguedad, int numEmpleado, String nombre, Double sueldo, String usuario, String contrasena) {
-        super(numEmpleado, nombre, sueldo, usuario, contrasena);
-        this.antiguedad = antiguedad;
+    public EmpleadoAdmin(int numEmpleado, String dni, String nombre, Double sueldo, String usuario, String contrasena) {
+        super(numEmpleado, dni, nombre, sueldo, usuario, contrasena);
     }
+    
+    /*METODOS*/
+
+    @Override
+    public String formatear() {
+        return "Administrador;"+this.getNumEmpleado()+";"+this.getNombre()+";"+this.getDni()+";"+this.getSueldo()+";"+this.getUsuario()+";"+this.getContrasena()+";";
+    }
+    
+    
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\t" + this.antiguedad;
+    }
+    
+    /*METODOS*/
 
     public int getAntiguedad() {
         return antiguedad;
@@ -25,10 +40,4 @@ public class EmpleadoAdmin extends Empleado {
     public void setAntiguedad(int antiguedad) {
         this.antiguedad = antiguedad;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + "\t" + this.antiguedad;
-    }
-
 }
