@@ -325,54 +325,77 @@ public class home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-        if(this.buscarUsuario(this.jTextPane1.getText(), this.jTextPane2.getText())){
+        if (this.buscarUsuario(this.jTextPane1.getText(), this.jTextPane2.getText())) {
             System.out.println("LOGIN CORRECTO");
             this.loginExitoso = true;
             this.jTextPane1.setText("");
             this.jTextPane2.setText("");
             actualizar();
-        }else{
+        } else {
             System.out.println("CREDENCIALES INCORRECTAS");
         }
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void desconexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desconexionActionPerformed
-        this.loginExitoso=false;
+        this.loginExitoso = false;
         actualizar();
     }//GEN-LAST:event_desconexionActionPerformed
 
     private void menuCrearClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCrearClienteActionPerformed
-        vista.CrearCliente crearCliente = new vista.CrearCliente();
-        crearCliente.setVisible(true);
+        if (this.loginExitoso) {
+            vista.CrearCliente crearCliente = new vista.CrearCliente();
+            crearCliente.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_menuCrearClienteActionPerformed
 
     private void menuEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarClienteActionPerformed
-        vista.EliminarCliente eliminarCliente = new vista.EliminarCliente();
-        eliminarCliente.setVisible(true);
+        if (this.loginExitoso) {
+            vista.EliminarCliente eliminarCliente = new vista.EliminarCliente();
+            eliminarCliente.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_menuEliminarClienteActionPerformed
 
     private void menuModificarClienteNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteNombreActionPerformed
-        vista.ModificarClienteNombre modifClienteNombre = new vista.ModificarClienteNombre();
-        modifClienteNombre.setVisible(true);
+        if (this.loginExitoso) {
+            vista.ModificarClienteNombre modifClienteNombre = new vista.ModificarClienteNombre();
+            modifClienteNombre.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_menuModificarClienteNombreActionPerformed
 
     private void menuModificarClienteTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteTelefonoActionPerformed
-        vista.ModificarClienteTelefono modifClienteTelefono = new vista.ModificarClienteTelefono();
-        modifClienteTelefono.setVisible(true);
+        if (this.loginExitoso) {
+            vista.ModificarClienteTelefono modifClienteTelefono = new vista.ModificarClienteTelefono();
+            modifClienteTelefono.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_menuModificarClienteTelefonoActionPerformed
 
     private void menuModificarClienteDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuModificarClienteDireccionActionPerformed
-        vista.ModificarClienteDireccion modifClienteDireccion = new vista.ModificarClienteDireccion();
-        modifClienteDireccion.setVisible(true);
+        if (this.loginExitoso) {
+            vista.ModificarClienteDireccion modifClienteDireccion = new vista.ModificarClienteDireccion();
+            modifClienteDireccion.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_menuModificarClienteDireccionActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        vista.CrearEmpleado crearEmpleado = new vista.CrearEmpleado();
-        crearEmpleado.setVisible(true);
+        if (this.loginExitoso) {
+            vista.CrearEmpleado crearEmpleado = new vista.CrearEmpleado();
+            crearEmpleado.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private boolean buscarUsuario(String usuario, String pass) {
@@ -397,11 +420,12 @@ public class home extends javax.swing.JFrame {
         return false;
 
     }
-    private void actualizar(){
-        if(this.loginExitoso==true){
+
+    private void actualizar() {
+        if (this.loginExitoso == true) {
             this.estadoVisual.setBackground(Color.green);
             this.informeEstado.setText("Conexion garantizada!");
-        }else{
+        } else {
             this.informeEstado.setText("");
             this.estadoVisual.setBackground(Color.red);
         }
