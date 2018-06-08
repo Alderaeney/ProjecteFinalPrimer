@@ -29,7 +29,7 @@ public class Cliente {
 
     /*METODOS*/
     public String formatear() {
-        return this.getDni() + ";" + this.nombre + ";" + this.direccion + ";";
+        return this.getDni() + ";" + this.nombre + ";" + this.direccion + ";" + this.telefono + ";";
     }
 
     /*METODOS*/

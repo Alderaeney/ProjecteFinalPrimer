@@ -40,6 +40,11 @@ public class home extends javax.swing.JFrame {
         this.jLabel4.setForeground(Color.white);
         Tienda t = new Tienda("MATH", "DR LUIS ISMARR", "454354", "64656454", "www.google.es");
         controlador.GestionFicheros.listaTienda.add(t);
+        try {
+            controlador.GestionFicheros.generacionDeEstructurasBasicas();
+        } catch (IOException ex) {
+            Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -428,10 +433,10 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        if(accesoAdmin==true){
+        if (accesoAdmin == true) {
             vista.ModificarSueldoEmpleado modifSueldoEmpleado = new vista.ModificarSueldoEmpleado();
             modifSueldoEmpleado.setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(jMenu2, "Usted no tiene permisos de administrador.\n Este error sera reportado");
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed

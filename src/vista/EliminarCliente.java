@@ -124,6 +124,7 @@ public class EliminarCliente extends javax.swing.JFrame {
         c = controlador.GestionFicheros.getListaTienda().get(0).buscarCliente(dni);
         try {
             controlador.GestionFicheros.getListaTienda().get(0).eliminarCliente(c);
+            controlador.GestionFicheros.bajaCliente(c);
             JOptionPane.showMessageDialog(rootPane, "El cliente fue eliminado exitosamente");
             DefaultTableModel model = (DefaultTableModel)this.TablaClientes.getModel();
             model.removeRow(row);

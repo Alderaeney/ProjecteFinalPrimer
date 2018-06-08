@@ -5,7 +5,10 @@
  */
 package vista;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
@@ -135,13 +138,18 @@ public class ModificarClienteTelefono extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Telefono cambiado exitosamente");
             DefaultTableModel model = (DefaultTableModel) this.tablaEmpleados.getModel();
             model.setValueAt(nuevoTelefono, row, 3);
+            try {
+                controlador.GestionFicheros.altaCliente(c);
+            } catch (IOException ex) {
+                Logger.getLogger(ModificarClienteNombre.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             System.out.println("Error, cliente es null");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-       super.dispose();
+        super.dispose();
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**

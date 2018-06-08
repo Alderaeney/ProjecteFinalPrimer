@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -229,6 +230,68 @@ public class GestionFicheros {
         table.addCell(IVAstr);
         table.addCell(importeNeto);
         subCatPart.add(table);
+    }
+
+    public static void generacionDeEstructurasBasicas() throws IOException {
+        File rutaInicial = new File("tienda");
+        if (!rutaInicial.exists()) {
+            rutaInicial.mkdir();
+        }
+        File rutaClientes = new File("tienda/clientes");
+        if (!rutaClientes.exists()) {
+            rutaClientes.mkdir();
+        }
+        File rutaEmpleados = new File("tienda/empleados");
+        if (!rutaEmpleados.exists()) {
+            rutaEmpleados.mkdir();
+        }
+        File rutaFacturas = new File("tienda/facturas");
+        if (!rutaFacturas.exists()) {
+            rutaFacturas.mkdir();
+        }
+        File rutaFacturasCSV = new File("tienda/facturas/CSV");
+        if (!rutaFacturasCSV.exists()) {
+            rutaFacturasCSV.mkdir();
+        }
+        File rutaFacturasPDF = new File("tienda/facturas/PDF");
+        if (!rutaFacturasPDF.exists()) {
+            rutaFacturasPDF.mkdir();
+        }
+
+    }
+
+    public static void altaCliente(Cliente c) throws IOException {
+        File rutaInicial = new File("tienda/clientes");
+        if (rutaInicial.exists()) {
+            File ficheroCliente = new File(rutaInicial.getAbsolutePath() + "/" + c.getDni() + ".csv");
+            ficheroCliente.createNewFile();
+            PrintWriter pw = new PrintWriter(ficheroCliente);
+            pw.print(c.formatear());
+            pw.close();
+        } else {
+            System.out.println("No fueron inicializadas las rutas basicas, pruebe otra vez");
+            try {
+                generacionDeEstructurasBasicas();
+            } catch (IOException ex) {
+                Logger.getLogger(GestionFicheros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public static void bajaCliente(Cliente c) {
+        File rutaInicial = new File("tienda/clientes/" + c.getDni() + ".csv");
+        if (rutaInicial.exists()) {
+            System.out.println("eliminando ficheros...");
+            rutaInicial.delete();
+        } else {
+            System.out.println("No fueron inicializadas las rutas basicas, pruebe otra vez");
+            try {
+                generacionDeEstructurasBasicas();
+            } catch (IOException ex) {
+                Logger.getLogger(GestionFicheros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
 
 }

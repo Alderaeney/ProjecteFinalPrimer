@@ -5,7 +5,10 @@
  */
 package vista;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
@@ -133,6 +136,11 @@ public class ModificarClienteDireccion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Direccion cambiada exitosamente");
             DefaultTableModel model = (DefaultTableModel) this.tablaEmpleados.getModel();
             model.setValueAt(nuevaDireccion, row, 2);
+            try {
+                controlador.GestionFicheros.altaCliente(c);
+            } catch (IOException ex) {
+                Logger.getLogger(ModificarClienteNombre.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             System.out.println("Error, cliente es null");
         }

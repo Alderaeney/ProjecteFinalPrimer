@@ -6,6 +6,7 @@
 package vista;
 
 import Excepciones.clienteExistente;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -137,7 +138,10 @@ public class CrearCliente extends javax.swing.JFrame {
                 controlador.GestionFicheros.getListaTienda().get(0).añadirCliente(c);
                 System.out.println("DADO CON EXITO");
                 System.out.println(controlador.GestionFicheros.getListaTienda().size());
+                controlador.GestionFicheros.altaCliente(c);
             } catch (clienteExistente ex) {
+                Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
                 Logger.getLogger(CrearCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
