@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Cliente;
@@ -292,6 +293,24 @@ public class GestionFicheros {
             }
         }
 
+    }
+
+    public static void cargarCliente() throws FileNotFoundException, IOException, clienteExistente {
+        File rutaInicial = new File("tienda/clientes/");
+        File[] clientes = rutaInicial.listFiles();
+        System.out.println("Hay "+clientes.length+" clientes");
+        for (int i = 0; i < clientes.length; i++) {
+            Scanner sc = new Scanner(clientes[i]);
+            String[] datos;
+            Cliente c;
+            while (sc.hasNext()) {
+                String linea = sc.nextLine();
+                datos=linea.split(";");
+                c=new Cliente(datos[1],datos[2],datos[0],datos[3]);
+                controlador.GestionFicheros.listaTienda.get(0).añadirCliente(c);
+            }
+            sc.close();
+        }
     }
 
 }

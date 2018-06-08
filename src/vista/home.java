@@ -5,6 +5,7 @@
  */
 package vista;
 
+import Excepciones.clienteExistente;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -42,7 +43,10 @@ public class home extends javax.swing.JFrame {
         controlador.GestionFicheros.listaTienda.add(t);
         try {
             controlador.GestionFicheros.generacionDeEstructurasBasicas();
+            controlador.GestionFicheros.cargarCliente();
         } catch (IOException ex) {
+            Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (clienteExistente ex) {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
