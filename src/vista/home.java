@@ -60,6 +60,10 @@ public class home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -87,11 +91,13 @@ public class home extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         menuFacturas = new javax.swing.JMenu();
+        generarFacturaVar = new javax.swing.JMenuItem();
+        eliminarFacturaVar = new javax.swing.JMenuItem();
         menuServicios = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-        /*
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
         setResizable(false);
@@ -118,14 +124,14 @@ public class home extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(304, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel7))
         );
-        */
+
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(null);
 
@@ -308,11 +314,33 @@ public class home extends javax.swing.JFrame {
         menuEmpleados.add(jMenu2);
 
         jMenuItem10.setText("Modo Administrador");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         menuEmpleados.add(jMenuItem10);
 
         jMenuBar1.add(menuEmpleados);
 
         menuFacturas.setText("Facturas");
+
+        generarFacturaVar.setText("Generar Factura");
+        generarFacturaVar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarFacturaVarActionPerformed(evt);
+            }
+        });
+        menuFacturas.add(generarFacturaVar);
+
+        eliminarFacturaVar.setText("Eliminar Factura");
+        eliminarFacturaVar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarFacturaVarActionPerformed(evt);
+            }
+        });
+        menuFacturas.add(eliminarFacturaVar);
+
         jMenuBar1.add(menuFacturas);
 
         menuServicios.setText("Productos");
@@ -427,23 +455,49 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        vista.EliminarEmpleado eliminarEmpleado = new vista.EliminarEmpleado();
-        eliminarEmpleado.setVisible(true);
+        if (this.loginExitoso) {
+            vista.EliminarEmpleado eliminarEmpleado = new vista.EliminarEmpleado();
+            eliminarEmpleado.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        vista.ModificarNombreEmpleado modifNomEmpleado = new vista.ModificarNombreEmpleado();
-        modifNomEmpleado.setVisible(true);
+        if (this.loginExitoso) {
+            vista.ModificarNombreEmpleado modifNomEmpleado = new vista.ModificarNombreEmpleado();
+            modifNomEmpleado.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        if (accesoAdmin == true) {
+        if (this.loginExitoso) {
             vista.ModificarSueldoEmpleado modifSueldoEmpleado = new vista.ModificarSueldoEmpleado();
             modifSueldoEmpleado.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(jMenu2, "Usted no tiene permisos de administrador.\n Este error sera reportado");
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void generarFacturaVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarFacturaVarActionPerformed
+        if (this.loginExitoso) {
+            generarFactura gf = new generarFactura();
+            gf.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
+    }//GEN-LAST:event_generarFacturaVarActionPerformed
+
+    private void eliminarFacturaVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarFacturaVarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarFacturaVarActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private boolean buscarUsuario(String usuario, String pass) {
         File ficheroAbuscar = new File("usuarios.txt");
@@ -518,10 +572,15 @@ public class home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton desconexion;
+    private javax.swing.JMenuItem eliminarFacturaVar;
     private javax.swing.JPanel estadoVisual;
+    private javax.swing.JMenuItem generarFacturaVar;
     private javax.swing.JLabel informeEstado;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -532,6 +591,7 @@ public class home extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;

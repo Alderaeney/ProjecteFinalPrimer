@@ -23,16 +23,15 @@ public class Factura {
     private MetodoPago mp;
     private ArrayList<LineaFactura> listaLineas = new ArrayList<>();
 
-    public Factura(int id, Cliente cliente, Calendar fecha, double importe, MetodoPago mp) {
+    public Factura(int id,Cliente cliente, Calendar fecha, double importe, MetodoPago mp) {
         this.id = id;
         this.cliente = cliente;
         this.fecha = Calendar.getInstance();
         this.importe = importe;
         this.mp = mp;
     }
-    
+
     /*METODOS*/
-    
     public LineaFactura buscarLineaDeFactura(int codLinea) {
         for (int i = 0; i < this.listaLineas.size(); i++) {
             if (this.listaLineas.get(i).getCodigoLinea() == codLinea) {
@@ -61,15 +60,14 @@ public class Factura {
 
     @Override
     public String toString() {
-        return this.cliente.toString() + "\t" + this.fecha + "\t" + this.mp + "\t" + this.importe;
+        return this.cliente.toString() + "\t" + this.id + "\t" + this.fecha + "\t" + this.mp + "\t" + this.importe;
     }
-    
-    public String formatear(){
-        return this.importe+";"+this.fecha.get(Calendar.DAY_OF_WEEK)+"/"+this.fecha.get(Calendar.MONTH)+"/"+this.fecha.get(Calendar.YEAR)+" "+this.fecha.get(Calendar.HOUR)+":"+this.fecha.get(Calendar.MINUTE)+";"+this.mp+";";
-    }
-    
-    /*METODOS*/
 
+    public String formatear() {
+        return this.importe + ";" + this.fecha.get(Calendar.DAY_OF_WEEK) + "/" + this.fecha.get(Calendar.MONTH) + "/" + this.fecha.get(Calendar.YEAR) + " " + this.fecha.get(Calendar.HOUR) + ":" + this.fecha.get(Calendar.MINUTE) + ";" + this.mp + ";";
+    }
+
+    /*METODOS*/
     public Cliente getC() {
         return cliente;
     }
@@ -117,7 +115,6 @@ public class Factura {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
 
     public MetodoPago getMp() {
         return mp;
@@ -126,4 +123,6 @@ public class Factura {
     public void setMp(MetodoPago mp) {
         this.mp = mp;
     }
+
+   
 }
