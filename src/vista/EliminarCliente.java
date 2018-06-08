@@ -5,7 +5,11 @@
  */
 package vista;
 
+import Excepciones.clienteNoExistente;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 
@@ -66,8 +70,18 @@ public class EliminarCliente extends javax.swing.JFrame {
         jLabel1.setText("Eliminar Cliente");
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +114,27 @@ public class EliminarCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        Cliente c;
+        //obtener la fila seleccionada
+        int row = this.TablaClientes.getSelectedRow();
+        //los valores de la fila seleccionada
+        String dni = this.TablaClientes.getValueAt(row, 0).toString();
+        c = controlador.GestionFicheros.getListaTienda().get(0).buscarCliente(dni);
+        try {
+            controlador.GestionFicheros.getListaTienda().get(0).eliminarCliente(c);
+            JOptionPane.showMessageDialog(rootPane, "El cliente fue eliminado exitosamente");
+            DefaultTableModel model = (DefaultTableModel)this.TablaClientes.getModel();
+            model.removeRow(row);
+        } catch (clienteNoExistente ex) {
+            Logger.getLogger(EliminarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        super.dispose();
+    }//GEN-LAST:event_btnAtrasActionPerformed
 
     /**
      * @param args the command line arguments

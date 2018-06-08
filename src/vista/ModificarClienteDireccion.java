@@ -5,17 +5,31 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+
 /**
  *
  * @author Bienvenidos
  */
 public class ModificarClienteDireccion extends javax.swing.JFrame {
 
+    private DefaultTableModel dtm;
+
     /**
      * Creates new form ModificarClienteDireccion
      */
     public ModificarClienteDireccion() {
         initComponents();
+        dtm = new DefaultTableModel();
+        this.tablaEmpleados.setModel(dtm);
+        dtm.addColumn("DNI");
+        dtm.addColumn("Nombre");
+        dtm.addColumn("Direccion");
+        dtm.addColumn("Telefono");
+        llenarTabla();
     }
 
     /**
@@ -44,8 +58,18 @@ public class ModificarClienteDireccion extends javax.swing.JFrame {
         jLabel2.setText("Nueva direccion:");
 
         btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,6 +122,26 @@ public class ModificarClienteDireccion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        Cliente c;
+        String nuevaDireccion = this.txtDireccion.getText();
+        int row = this.tablaEmpleados.getSelectedRow();
+        String dni = this.tablaEmpleados.getValueAt(row, 0).toString();
+        c = controlador.GestionFicheros.getListaTienda().get(0).buscarCliente(dni);
+        if (c != null) {
+            c.setDireccion(nuevaDireccion);
+            JOptionPane.showMessageDialog(rootPane, "Direccion cambiada exitosamente");
+            DefaultTableModel model = (DefaultTableModel) this.tablaEmpleados.getModel();
+            model.setValueAt(nuevaDireccion, row, 2);
+        } else {
+            System.out.println("Error, cliente es null");
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+       super.dispose();
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -142,4 +186,21 @@ public class ModificarClienteDireccion extends javax.swing.JFrame {
     private javax.swing.JTable tablaEmpleados;
     private javax.swing.JTextField txtDireccion;
     // End of variables declaration//GEN-END:variables
+private void llenarTabla() {
+        ArrayList<Cliente> clientes = controlador.GestionFicheros.getListaTienda().get(0).getListaClientes();
+        borrarTable();
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente cli = clientes.get(i);
+            Object[] datos = {cli.getDni(), cli.getNombre(), cli.getDireccion(), cli.getTelefono()};
+            dtm.addRow(datos);
+            this.tablaEmpleados.setModel(dtm);
+        }
+    }
+
+    private void borrarTable() {
+        while (0 < dtm.getRowCount()) {
+            dtm.removeRow(0);
+        }
+    }
+
 }
