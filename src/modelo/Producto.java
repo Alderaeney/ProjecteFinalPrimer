@@ -22,10 +22,8 @@ public abstract class Producto {
     }
 
     /*METODOS*/
-    
     public abstract String formatear();
-    
-    
+
     /*METODOS*/
     public String getNombre() {
         return nombre;
@@ -53,6 +51,6 @@ public abstract class Producto {
 
     @Override
     public String toString() {
-        return this.codigo + "\t" + this.nombre + "\t" + this.precio;
+        return "\t" + this.codigo +" "+ "\t" + this.nombre + "\t" + this.precio + "\t";
     }
 }
