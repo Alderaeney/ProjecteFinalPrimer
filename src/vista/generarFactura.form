@@ -287,7 +287,7 @@
         <Component class="javax.swing.JButton" name="eliminarLineaBtn">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/vista/substract.png"/>
+              <Image iconType="3" name="/iconos/substract.png"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
@@ -298,7 +298,7 @@
         <Component class="javax.swing.JButton" name="a&#xf1;adirLineaBtn1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/vista/add.png"/>
+              <Image iconType="3" name="/iconos/add.png"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>

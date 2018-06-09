@@ -7,6 +7,7 @@ package controlador;
 
 import Excepciones.clienteExistente;
 import Excepciones.clienteNoExistente;
+import Excepciones.productoExistente;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -36,6 +37,10 @@ import java.util.logging.Logger;
 import modelo.Cliente;
 import modelo.Factura;
 import modelo.LineaFactura;
+import modelo.Ordenador;
+import modelo.Pieza;
+import modelo.Producto;
+import modelo.Servicio;
 import modelo.Tienda;
 
 /**
@@ -250,6 +255,10 @@ public class GestionFicheros {
         if (!rutaFacturas.exists()) {
             rutaFacturas.mkdir();
         }
+        File rutaProductos = new File("tienda/productos");
+        if (!rutaProductos.exists()) {
+            rutaProductos.mkdir();
+        }
         File rutaFacturasCSV = new File("tienda/facturas/CSV");
         if (!rutaFacturasCSV.exists()) {
             rutaFacturasCSV.mkdir();
@@ -295,18 +304,63 @@ public class GestionFicheros {
 
     }
 
+    public static void altaProducto(Producto p) throws IOException {
+        File rutaInicial = new File("tienda/productos");
+        if (rutaInicial.exists()) {
+            File ficheroProducto = new File(rutaInicial.getAbsolutePath() + "/" + p.getCodigo() + ".csv");
+            ficheroProducto.createNewFile();
+            PrintWriter pw = new PrintWriter(ficheroProducto);
+            pw.print(p.formatear());
+            pw.close();
+        } else {
+            System.out.println("No fueron inicializadas las rutas basicas, pruebe otra vez");
+            try {
+                generacionDeEstructurasBasicas();
+            } catch (IOException ex) {
+                Logger.getLogger(GestionFicheros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public static void cargarProductos() throws FileNotFoundException, productoExistente {
+        File rutaInicial = new File("tienda/productos/");
+        File[] productos = rutaInicial.listFiles();
+        System.out.println("Hay " + productos.length + " productos");
+        for (int i = 0; i < productos.length; i++) {
+            Scanner sc = new Scanner(productos[i]);
+            while (sc.hasNext()) {
+                String linea = sc.nextLine();
+                String[] contenido = linea.split(";");
+                if (contenido[0].equalsIgnoreCase("Pieza")) {
+                    Pieza p = new Pieza(Integer.parseInt(contenido[4]), contenido[2], contenido[1], Double.parseDouble(contenido[3]));
+                    controlador.GestionFicheros.listaTienda.get(0).añadirProducto(p);
+                }
+                if (contenido[0].equalsIgnoreCase("Ordenador")) {
+                    Ordenador o = new Ordenador(Integer.parseInt(contenido[4]), contenido[2], contenido[1], Double.parseDouble(contenido[3]));
+                    controlador.GestionFicheros.listaTienda.get(0).añadirProducto(o);
+                }
+                if (contenido[0].equalsIgnoreCase("Servicio")) {
+                    Servicio s = new Servicio(Double.parseDouble(contenido[4]), contenido[2], contenido[1], Double.parseDouble(contenido[3]));
+                    controlador.GestionFicheros.listaTienda.get(0).añadirProducto(s);
+                }
+            }
+            sc.close();
+        }
+
+    }
+
     public static void cargarCliente() throws FileNotFoundException, IOException, clienteExistente {
         File rutaInicial = new File("tienda/clientes/");
         File[] clientes = rutaInicial.listFiles();
-        System.out.println("Hay "+clientes.length+" clientes");
+        System.out.println("Hay " + clientes.length + " clientes");
         for (int i = 0; i < clientes.length; i++) {
             Scanner sc = new Scanner(clientes[i]);
             String[] datos;
             Cliente c;
             while (sc.hasNext()) {
                 String linea = sc.nextLine();
-                datos=linea.split(";");
-                c=new Cliente(datos[1],datos[2],datos[0],datos[3]);
+                datos = linea.split(";");
+                c = new Cliente(datos[1], datos[2], datos[0], datos[3]);
                 controlador.GestionFicheros.listaTienda.get(0).añadirCliente(c);
             }
             sc.close();

@@ -6,6 +6,7 @@
 package vista;
 
 import Excepciones.clienteExistente;
+import Excepciones.productoExistente;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -44,9 +45,12 @@ public class home extends javax.swing.JFrame {
         try {
             controlador.GestionFicheros.generacionDeEstructurasBasicas();
             controlador.GestionFicheros.cargarCliente();
+            controlador.GestionFicheros.cargarProductos();
         } catch (IOException ex) {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (clienteExistente ex) {
+            Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (productoExistente ex) {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -346,12 +350,27 @@ public class home extends javax.swing.JFrame {
         menuServicios.setText("Productos");
 
         jMenuItem11.setText("Piezas");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         menuServicios.add(jMenuItem11);
 
         jMenuItem12.setText("Ordenadores");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         menuServicios.add(jMenuItem12);
 
         jMenuItem13.setText("Servicios");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         menuServicios.add(jMenuItem13);
 
         jMenuBar1.add(menuServicios);
@@ -498,6 +517,36 @@ public class home extends javax.swing.JFrame {
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        if (this.loginExitoso) {
+            CrearPiezas cp = new CrearPiezas();
+            cp.setLocation(475, 0);
+            cp.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        if (this.loginExitoso) {
+            CrearOrdenador co = new CrearOrdenador();
+            co.setLocation(475, 0);
+            co.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        if (this.loginExitoso) {
+            CrearServicio cs = new CrearServicio();
+            cs.setLocation(475, 0);
+            cs.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");
+        }
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private boolean buscarUsuario(String usuario, String pass) {
         File ficheroAbuscar = new File("usuarios.txt");

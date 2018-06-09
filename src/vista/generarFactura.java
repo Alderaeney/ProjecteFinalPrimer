@@ -151,7 +151,7 @@ public class generarFactura extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        eliminarLineaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/substract.png"))); // NOI18N
+        eliminarLineaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/substract.png"))); // NOI18N
         eliminarLineaBtn.setAlignmentY(0.0F);
         eliminarLineaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +159,7 @@ public class generarFactura extends javax.swing.JFrame {
             }
         });
 
-        añadirLineaBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/add.png"))); // NOI18N
+        añadirLineaBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/add.png"))); // NOI18N
         añadirLineaBtn1.setAlignmentY(0.0F);
         añadirLineaBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
