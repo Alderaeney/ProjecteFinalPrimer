@@ -612,31 +612,33 @@ public class generarFactura extends javax.swing.JFrame {
             if (this.dtm2.getRowCount() > 0) {
                 Cliente seleccionado = controlador.GestionFicheros.listaTienda.get(0).getListaClientes().get(this.comboBoxCliente.getSelectedIndex());
                 Factura nuevaFactura = null;
+                Factura facturaPdf = null;
                 if (this.radioEfectivo.isSelected()) {
-
+                    facturaPdf = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.importeBruto.getText().substring(0, this.importeBruto.getText().length() - 2)), MetodoPago.EFECTIVO);
                     nuevaFactura = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.txtNeto.getText()), MetodoPago.EFECTIVO);
                 }
                 if (this.radioVisa.isSelected()) {
+                    facturaPdf = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.importeBruto.getText().substring(0, this.importeBruto.getText().length() - 2)), MetodoPago.TARJETA_BANCARIA);
                     nuevaFactura = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.txtNeto.getText()), MetodoPago.TARJETA_BANCARIA);
                 }
                 if (this.radiobtn.isSelected()) {
+                    facturaPdf = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.importeBruto.getText().substring(0, this.importeBruto.getText().length() - 2)), MetodoPago.BITCOIN);
                     nuevaFactura = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.txtNeto.getText()), MetodoPago.BITCOIN);
                 }
                 if (this.radioeth.isSelected()) {
+                    facturaPdf = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.importeBruto.getText().substring(0, this.importeBruto.getText().length() - 2)), MetodoPago.ETHEREUM);
                     nuevaFactura = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.txtNeto.getText()), MetodoPago.ETHEREUM);
                 }
                 if (this.radioltc.isSelected()) {
+                    facturaPdf = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.importeBruto.getText().substring(0, this.importeBruto.getText().length() - 2)), MetodoPago.LITECOIN);
                     nuevaFactura = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.txtNeto.getText()), MetodoPago.LITECOIN);
                 }
                 if (this.radioiota.isSelected()) {
+                    facturaPdf = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.importeBruto.getText().substring(0, this.importeBruto.getText().length() - 2)), MetodoPago.IOTA);
                     nuevaFactura = new Factura(seleccionado, LocalDateTime.now().toString(), Double.parseDouble(this.txtNeto.getText()), MetodoPago.IOTA);
                 }
                 for (int i = 0; i < this.listaLineas.size(); i++) {
-                    try {
-                        nuevaFactura.añadirLineaAFactura(this.listaLineas.get(i));
-                    } catch (lineaFacturaExistente ex) {
-                        Logger.getLogger(generarFactura.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    nuevaFactura.añadirLineaAFacturaExpress(this.listaLineas.get(i));
                 }
                 while (this.dtm2.getRowCount() > 0) {
                     this.dtm2.removeRow(0);

@@ -73,16 +73,21 @@ public class GestionFicheros {
         GestionFicheros.listaTienda = listaTienda;
     }
 
-    public static void generarDocumentoFactura(Factura f) throws FileNotFoundException, DocumentException {
+    public static void generarDocumentoFactura(Factura f) throws FileNotFoundException, DocumentException, IOException {
         Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("ReporteSinIMG.pdf"));
+        File fact = new File("tienda/facturas/PDF/" + f.getId() + ".pdf");
+        if (!fact.exists()) {
+            fact.createNewFile();
+        }
+        PdfWriter.getInstance(document, new FileOutputStream(fact));
         document.open();
         añadirMetadata(document);
-
         añadirTituloPagina(document, f);
         añadirContenido(document, f);
         document.close();
-        añadirImagen(document, new File("ReporteSinIMG.pdf"), new File("ReporteConIMG.pdf"), new File("125.png"));
+        añadirImagen(document, fact, new File("tienda/facturas/PDF/" + f.getId() + "ConIMG.pdf"
+        ), new File("125.png")
+        );
     }
 
     public static void añadirMetadata(Document doc) {
@@ -199,17 +204,28 @@ public class GestionFicheros {
         double totalNeto = 0;
         double IVA = 1.21;
         double dtoVolumen = 0.98;
+        double dtoCrypto = 0.90;
         double descuentos;
         double dtoProntoPago = 0.97;
         for (int i = 0; i < f.getListaLineas().size(); i++) {
             totalBruto += f.getListaLineas().get(i).getCoste();
         }
         if (f.getListaLineas().size() > 10) {
-            totalNeto = (totalBruto * dtoProntoPago * dtoVolumen) * IVA;
-            descuentos = (totalBruto * 0.02) + (totalBruto * 0.03);
+            if (f.getMp() == MetodoPago.BITCOIN || f.getMp() == MetodoPago.ETHEREUM || f.getMp() == MetodoPago.LITECOIN || f.getMp() == MetodoPago.IOTA) {
+                totalNeto = (totalBruto * dtoProntoPago * dtoVolumen * dtoCrypto) * IVA;
+                descuentos = (totalBruto * 0.02) + (totalBruto * 0.03) + (totalBruto * 0.10);
+            } else {
+                totalNeto = (totalBruto * dtoProntoPago * dtoVolumen) * IVA;
+                descuentos = (totalBruto * 0.02) + (totalBruto * 0.03);
+            }
         } else {
-            totalNeto = (totalBruto * dtoProntoPago) * IVA;
-            descuentos = (totalBruto * 0.03);
+            if (f.getMp() == MetodoPago.BITCOIN || f.getMp() == MetodoPago.ETHEREUM || f.getMp() == MetodoPago.LITECOIN || f.getMp() == MetodoPago.IOTA) {
+                totalNeto = (totalBruto * dtoProntoPago * dtoCrypto) * IVA;
+                descuentos = (totalBruto * 0.03) + (totalBruto * 0.10);
+            } else {
+                totalNeto = (totalBruto * dtoProntoPago) * IVA;
+                descuentos = (totalBruto * 0.03);
+            }
         }
 
         PdfPTable table = new PdfPTable(new float[]{20, 20, 20, 20});
@@ -234,7 +250,7 @@ public class GestionFicheros {
 
         String importeBruto = "" + totalBruto;
         String descuentoStr = "" + descuentos;
-        String IVAstr = "" + IVA;
+        String IVAstr = "" + (totalBruto * 0.21);
         String importeNeto = "" + totalNeto;
         table.addCell(importeBruto);
         table.addCell(descuentoStr);

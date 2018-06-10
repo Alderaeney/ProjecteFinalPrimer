@@ -50,7 +50,7 @@ public class home extends javax.swing.JFrame {
             controlador.GestionFicheros.cargarProductos();
             controlador.GestionFicheros.cargarFacturas();
             controlador.GestionFicheros.redistribuirFacturas();
-            System.out.println(controlador.GestionFicheros.listaFacturas.get(0).toString());
+            //System.out.println(controlador.GestionFicheros.listaFacturas.get(0).toString());
         } catch (IOException ex) {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (clienteExistente ex) {
