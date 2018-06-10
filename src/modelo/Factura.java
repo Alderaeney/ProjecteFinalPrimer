@@ -9,6 +9,7 @@ import Excepciones.lineaFacturaExistente;
 import Excepciones.lineaFacturaNoExistente;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -18,15 +19,23 @@ public class Factura {
 
     private int id;
     private Cliente cliente;
-    private Calendar fecha;
+    private String fecha;
     private double importe;
     private MetodoPago mp;
     private ArrayList<LineaFactura> listaLineas = new ArrayList<>();
 
-    public Factura(int id,Cliente cliente, Calendar fecha, double importe, MetodoPago mp) {
+    public Factura(Cliente cliente, String fecha, double importe, MetodoPago mp) {
+        this.id = (int) Math.round(Math.random() * 1000);
+        this.cliente = cliente;
+        this.fecha = fecha;
+        this.importe = importe;
+        this.mp = mp;
+    }
+
+    public Factura(int id, Cliente cliente, String fecha, double importe, MetodoPago mp) {
         this.id = id;
         this.cliente = cliente;
-        this.fecha = Calendar.getInstance();
+        this.fecha = fecha;
         this.importe = importe;
         this.mp = mp;
     }
@@ -49,6 +58,10 @@ public class Factura {
         }
     }
 
+    public void añadirLineaAFacturaExpress(LineaFactura lf) {
+        this.listaLineas.add(lf);
+    }
+
     public void eliminarLineaDeFactura(LineaFactura lf) throws lineaFacturaNoExistente {
         if (this.buscarLineaDeFactura(lf.getCodigoLinea()) != null) {
             this.listaLineas.remove(lf);
@@ -64,7 +77,13 @@ public class Factura {
     }
 
     public String formatear() {
-        return this.importe + ";" + this.fecha.get(Calendar.DAY_OF_WEEK) + "/" + this.fecha.get(Calendar.MONTH) + "/" + this.fecha.get(Calendar.YEAR) + " " + this.fecha.get(Calendar.HOUR) + ":" + this.fecha.get(Calendar.MINUTE) + ";" + this.mp + ";";
+        String cabecera = this.id + ";" + this.cliente.getDni() + ";" + this.fecha + ";" + this.importe + ";" + this.mp + ";" + "Lineas" + ";";
+        //idDelaFactura;idCliente;DateFactura;importeFinal;MetodoPago;EmpiezaLinea;idCodilinea;idProducto;cantidad;coste; >> aparecera en los ficheros
+        for (int i = 0; i < this.listaLineas.size(); i++) {
+            cabecera += this.listaLineas.get(i).formatear();
+        }
+        System.out.println(cabecera);
+        return cabecera;
     }
 
     /*METODOS*/
@@ -76,11 +95,11 @@ public class Factura {
         this.cliente = cliente;
     }
 
-    public Calendar getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Calendar fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -124,5 +143,4 @@ public class Factura {
         this.mp = mp;
     }
 
-   
 }

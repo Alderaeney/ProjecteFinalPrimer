@@ -6,12 +6,14 @@
 package vista;
 
 import Excepciones.clienteExistente;
+import Excepciones.lineaFacturaExistente;
 import Excepciones.productoExistente;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -46,11 +48,18 @@ public class home extends javax.swing.JFrame {
             controlador.GestionFicheros.generacionDeEstructurasBasicas();
             controlador.GestionFicheros.cargarCliente();
             controlador.GestionFicheros.cargarProductos();
+            controlador.GestionFicheros.cargarFacturas();
+            controlador.GestionFicheros.redistribuirFacturas();
+            System.out.println(controlador.GestionFicheros.listaFacturas.get(0).toString());
         } catch (IOException ex) {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (clienteExistente ex) {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         } catch (productoExistente ex) {
+            Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (lineaFacturaExistente ex) {
             Logger.getLogger(home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

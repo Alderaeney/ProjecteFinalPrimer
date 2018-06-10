@@ -7,6 +7,7 @@ package controlador;
 
 import Excepciones.clienteExistente;
 import Excepciones.clienteNoExistente;
+import Excepciones.lineaFacturaExistente;
 import Excepciones.productoExistente;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
@@ -29,6 +30,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
@@ -37,6 +40,7 @@ import java.util.logging.Logger;
 import modelo.Cliente;
 import modelo.Factura;
 import modelo.LineaFactura;
+import modelo.MetodoPago;
 import modelo.Ordenador;
 import modelo.Pieza;
 import modelo.Producto;
@@ -51,6 +55,7 @@ public class GestionFicheros {
 
     public static File raiz;
     public static ArrayList<Tienda> listaTienda = new ArrayList<>();
+    public static ArrayList<Factura> listaFacturas = new ArrayList<>();
 
     public static File getRaiz() {
         return raiz;
@@ -68,7 +73,7 @@ public class GestionFicheros {
         GestionFicheros.listaTienda = listaTienda;
     }
 
-    public void generarDocumentoFactura(Factura f) throws FileNotFoundException, DocumentException {
+    public static void generarDocumentoFactura(Factura f) throws FileNotFoundException, DocumentException {
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream("ReporteSinIMG.pdf"));
         document.open();
@@ -80,7 +85,7 @@ public class GestionFicheros {
         añadirImagen(document, new File("ReporteSinIMG.pdf"), new File("ReporteConIMG.pdf"), new File("125.png"));
     }
 
-    public void añadirMetadata(Document doc) {
+    public static void añadirMetadata(Document doc) {
         doc.addTitle(listaTienda.get(0).getNombre());
         doc.addSubject(listaTienda.get(0).getDireccion());
         doc.addKeywords(listaTienda.get(0).getCIF());
@@ -88,7 +93,7 @@ public class GestionFicheros {
         doc.addAuthor(listaTienda.get(0).getWeb());
     }
 
-    public void añadirTituloPagina(Document document, Factura f)
+    public static void añadirTituloPagina(Document document, Factura f)
             throws DocumentException {
         Paragraph preface = new Paragraph();
         // We add one empty line
@@ -110,7 +115,7 @@ public class GestionFicheros {
         //document.newPage();
     }
 
-    public void añadirContenido(Document document, Factura f) throws DocumentException {
+    public static void añadirContenido(Document document, Factura f) throws DocumentException {
         Paragraph preface = new Paragraph();
         añadirLineasVacias(preface, 3);
         boolean primeraVez = true;
@@ -127,7 +132,7 @@ public class GestionFicheros {
         document.add(preface2);
     }
 
-    public void createTable(Paragraph subCatPart, boolean primeraVez, Factura f, int i) throws BadElementException {
+    public static void createTable(Paragraph subCatPart, boolean primeraVez, Factura f, int i) throws BadElementException {
         //PdfPTable table = new PdfPTable(3);
         PdfPTable table = new PdfPTable(new float[]{20, 85, 20, 20});
         table.setWidthPercentage(100);
@@ -162,13 +167,13 @@ public class GestionFicheros {
 
     }
 
-    public void añadirLineasVacias(Paragraph paragraph, int number) {
+    public static void añadirLineasVacias(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
             paragraph.add(new Paragraph(" "));
         }
     }
 
-    public void añadirImagen(Document document, File source, File dest, File img) {
+    public static void añadirImagen(Document document, File source, File dest, File img) {
         try {
             PdfReader reader = new PdfReader(source.getAbsolutePath());
             PdfStamper stamer = new PdfStamper(reader, new FileOutputStream(dest.getAbsolutePath()));
@@ -189,7 +194,7 @@ public class GestionFicheros {
         }
     }
 
-    public void calcularResultadoYPDF(Paragraph subCatPart, Factura f) {
+    public static void calcularResultadoYPDF(Paragraph subCatPart, Factura f) {
         double totalBruto = 0;
         double totalNeto = 0;
         double IVA = 1.21;
@@ -320,6 +325,88 @@ public class GestionFicheros {
                 Logger.getLogger(GestionFicheros.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    public static void altaFactura(Factura f) throws IOException {
+        File rutaInicial = new File("tienda/facturas/CSV");
+        if (rutaInicial.exists()) {
+            File ficheroFactura = new File(rutaInicial.getAbsolutePath() + "/" + f.getId() + ".csv");
+            ficheroFactura.createNewFile();
+            PrintWriter pw = new PrintWriter(ficheroFactura);
+            pw.print(f.formatear());
+            pw.close();
+        } else {
+            System.out.println("No fueron inicializadas las rutas basicas, pruebe otra vez");
+            try {
+                generacionDeEstructurasBasicas();
+            } catch (IOException ex) {
+                Logger.getLogger(GestionFicheros.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public static void cargarFacturas() throws FileNotFoundException, ParseException, lineaFacturaExistente {
+        File rutaInicial = new File("tienda/facturas/CSV");
+        File[] facturas = rutaInicial.listFiles();
+        System.out.println("Hay " + facturas.length + " facturas");
+        for (int i = 0; i < facturas.length; i++) {
+            Scanner sc = new Scanner(facturas[i]);
+            Factura nuevaFactura = null;
+            while (sc.hasNext()) {
+                String linea = sc.nextLine();
+                String[] datos = linea.split(";");
+                String lineaFactura = "";
+                Cliente c = controlador.GestionFicheros.listaTienda.get(0).buscarCliente(datos[1]);//De esta forma tenemos el cliente
+                if (datos[4].equalsIgnoreCase("efectivo")) {
+                    nuevaFactura = new Factura(Integer.parseInt(datos[0]), c, datos[2], Double.parseDouble(datos[3]), MetodoPago.EFECTIVO);
+                }
+                if (datos[4].equalsIgnoreCase("TARJETA_BANCARIA")) {
+                    nuevaFactura = new Factura(Integer.parseInt(datos[0]), c, datos[2], Double.parseDouble(datos[3]), MetodoPago.TARJETA_BANCARIA);
+                }
+                if (datos[4].equalsIgnoreCase("BITCOIN")) {
+                    nuevaFactura = new Factura(Integer.parseInt(datos[0]), c, datos[2], Double.parseDouble(datos[3]), MetodoPago.BITCOIN);
+                }
+                if (datos[4].equalsIgnoreCase("ETHEREUM")) {
+                    nuevaFactura = new Factura(Integer.parseInt(datos[0]), c, datos[2], Double.parseDouble(datos[3]), MetodoPago.ETHEREUM);
+                }
+                if (datos[4].equalsIgnoreCase("LITECOIN")) {
+                    nuevaFactura = new Factura(Integer.parseInt(datos[0]), c, datos[2], Double.parseDouble(datos[3]), MetodoPago.LITECOIN);
+                }
+                if (datos[4].equalsIgnoreCase("IOTA")) {
+                    nuevaFactura = new Factura(Integer.parseInt(datos[0]), c, datos[2], Double.parseDouble(datos[3]), MetodoPago.IOTA);
+                }
+                int k = 0;
+                for (int j = 6; j < datos.length; j++) {
+                    lineaFactura += datos[j] + ";";
+                    if (k == 4) {
+                        k = 0;
+                        //System.out.println(lineaFactura);
+                        String[] lfarray = lineaFactura.split(";");
+                        //System.out.println("busqueda de producto por " + lfarray[1]);
+                        Producto p = controlador.GestionFicheros.listaTienda.get(0).buscarProducto(lfarray[1].trim());
+                        LineaFactura lf = new LineaFactura(Integer.parseInt(lfarray[0]), p, Integer.parseInt(lfarray[2]), Double.parseDouble(lfarray[3]));
+                        nuevaFactura.añadirLineaAFacturaExpress(lf);
+                    }
+                    k++;
+                }
+
+            }
+            controlador.GestionFicheros.listaFacturas.add(nuevaFactura);
+            sc.close();
+        }
+    }
+
+    public static void redistribuirFacturas() {
+        ArrayList<Cliente> listaClientes = controlador.GestionFicheros.listaTienda.get(0).getListaClientes();
+        for (int i = 0; i < listaClientes.size(); i++) {
+            for (int j = 0; j < listaFacturas.size(); j++) {
+                if (listaClientes.get(i).getDni().equalsIgnoreCase(listaFacturas.get(j).getCliente().getDni())) {
+                    listaClientes.get(i).getFacturas().add(listaFacturas.get(j));
+                    System.out.println("Añadida factura a " + listaClientes.get(i).getNombre());
+                }
+            }
+        }
+
     }
 
     public static void cargarProductos() throws FileNotFoundException, productoExistente {

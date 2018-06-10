@@ -23,6 +23,13 @@ public class LineaFactura {
         this.coste = producto.getPrecio() * cantidad;
     }
 
+    public LineaFactura(int codigoLinea, Producto producto, int cantidad, Double coste) {
+        this.codigoLinea = codigoLinea;
+        this.producto = producto;
+        this.cantidad = cantidad;
+        this.coste = coste;
+    }
+
     /*METODOS*/
     public String formatear() {
         return this.codigoLinea + ";" + this.producto.getCodigo() + ";" + this.cantidad + ";" + this.coste + ";";
