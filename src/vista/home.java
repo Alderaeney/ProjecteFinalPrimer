@@ -42,7 +42,7 @@ public class home extends javax.swing.JFrame {
         this.informeEstado.setForeground(Color.white);
         this.jLabel3.setForeground(Color.white);
         this.jLabel4.setForeground(Color.white);
-        Tienda t = new Tienda("MATH", "DR LUIS ISMARR", "454354", "64656454", "www.google.es");
+        Tienda t = new Tienda("MATH", " Avinguda de les Corts Valencianes, s/n, 46800 Xàtiva, València", "454354", "64656454", "http://ieslluissimarro.org/");
         controlador.GestionFicheros.listaTienda.add(t);
         try {
             controlador.GestionFicheros.generacionDeEstructurasBasicas();
@@ -513,6 +513,7 @@ public class home extends javax.swing.JFrame {
     private void generarFacturaVarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarFacturaVarActionPerformed
         if (this.loginExitoso) {
             generarFactura gf = new generarFactura();
+            gf.setLocation(475, 0);
             gf.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "DEBES LOGEARTE ANTES DE PONER USAR LAS FUNCIONALIDADES");

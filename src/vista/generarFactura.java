@@ -7,6 +7,8 @@ package vista;
 
 import Excepciones.lineaFacturaExistente;
 import com.itextpdf.text.DocumentException;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.RoundingMode;
@@ -651,6 +653,14 @@ public class generarFactura extends javax.swing.JFrame {
                 try {
                     controlador.GestionFicheros.altaFactura(nuevaFactura);
                     controlador.GestionFicheros.generarDocumentoFactura(nuevaFactura);
+                    File file = new File("tienda/facturas/PDF/" + nuevaFactura.getId() + "ConIMG.pdf");
+                    if (file.toString().endsWith(".pdf")) {
+                        Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + file);
+                    } else {
+                        Desktop desktop = Desktop.getDesktop();
+                        desktop.open(file);
+                    }
+
                 } catch (IOException ex) {
                     Logger.getLogger(generarFactura.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (DocumentException ex) {
